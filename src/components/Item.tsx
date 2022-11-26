@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { languageItem } from '../types'
+import Context from '../context/StaticContext'
 
 interface CardItemProps {
-    item: {
-        id: number,
-        name: string,
-        description: string,
-        poster: string
-    };
-    test: (item: CardItemProps['item']) => void
-    update: ( item : CardItemProps['item'] ) => void
+    item: languageItem
+    test: (item: languageItem) => void
+    update: ( item : languageItem) => void
 }
 
 const CardItem: React.FC<CardItemProps> = ({ item, test, update }) => {

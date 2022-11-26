@@ -1,47 +1,40 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+import { languageItem, FormElement } from '../types'
 
-const IState : Form = {
+const IState : languageItem = {
     id : 0,
     name: '',
     description: '',
     poster: ''
 }
 
-interface Types {
-    item: {
-        id: number,
-        name: string,
-        description: string,
-        poster: string
-    };
-    item2 : {
-        nombre: string,
-        apellido: string
-    };
+const useContainer = ({ add } : FormularioProps) => {
+    let test;
+
+    return {
+        test
+    }
 }
 
 interface FormularioProps {
-    add: ( item : Form ) => void;
+    add: ( item : languageItem ) => void;
 }
 
-type Form = Types['item'];
-type FormElement = FormEvent<HTMLFormElement>
-
 const Formulario = ({ add } : FormularioProps) => {
+    const [item, setItem] = useState<languageItem>(IState);
+    const [listItem, setListItem] = useState<Array<languageItem>>([]);
 
-    const [item, setItem] = useState<Form>(IState);
-    const [listItem, setListItem] = useState<Array<Form>>([]);
+    const {test} = useContainer({add})
+
+    const handleChange = (e : ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | ChangeEvent<HTMLInputElement>) => {
+        setItem({...item, [e.target.name] : e.target.value});
+    }
 
     const handleSubmit = (e : FormElement) => {
         e.preventDefault();
         setListItem([...listItem, item]);
         add(item);        
     }
-
-    const handleChange = (e : ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | ChangeEvent<HTMLInputElement>) => {
-        setItem({...item, [e.target.name] : e.target.value});
-    }
-
     return (
         <>
             <form onSubmit={ handleSubmit }>

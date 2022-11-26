@@ -1,44 +1,10 @@
-import { useState } from "react";
-import { language } from "../Languages";
 import Formulario from "./FormularioRemove";
 import CardItem from "./Item";
-
-interface Types {
-    item: {
-        id: number,
-        name: string,
-        description: string,
-        poster: string
-    };
-}
-
-type itemLang = Types['item'];
+import { useContainer } from "../hooks/useContainer";
 
 const Container = () => {
 
-    const [lenguajes, setLenguajes] = useState<Array<itemLang>>(language);
-    const [item, setItem] = useState<itemLang>();
-    const [listItem, setListItem] = useState<Array<itemLang>>([]);
-
-    const recibirItem = (item: itemLang) => {
-        setItem(item);
-        setListItem([...listItem, item]);
-        console.log(item.id);
-    }
-
-    const deleteElement = (item: itemLang) => {
-        setListItem(listItem.filter(e => e.name != item.name));
-    }
-
-    const testItem = (element: Types['item']) => {
-        console.log(element);
-        setLenguajes([...lenguajes, element]);
-    }
-
-    const deleteAll = () => {
-        setLenguajes([]);
-        setListItem([]);
-    }
+    const { listItem, lenguajes, deleteAll, testItem, recibirItem, deleteElement } = useContainer()
 
     return (
         <div>
