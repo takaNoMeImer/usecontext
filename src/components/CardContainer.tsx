@@ -4,7 +4,7 @@ import { useContainer } from "../hooks/useContainer";
 
 const Container = () => {
 
-    const { listItem, lenguajes, deleteAll, testItem, recibirItem, deleteElement } = useContainer()
+    const { listItem,lenguajes, deleteAll, testItem, recibirItem, deleteElement } = useContainer()
 
     return (
         <div>

@@ -1,11 +1,13 @@
 import { languageItem } from '../types'
-import { useState } from "react";
-import { language } from "../Languages";
+import { useContext, useState } from "react";
+import { StaticContext } from '../context/StaticContext';
 
+/* This is the Custom Hook */
 export function useContainer() {
-    const [lenguajes, setLenguajes] = useState<Array<languageItem>>(language);
+
     const [item, setItem] = useState<languageItem>();
     const [listItem, setListItem] = useState<Array<languageItem>>([]);
+    const { lenguajes, setLenguajes } = useContext( StaticContext )
 
     const deleteAll = () => {
         setLenguajes([]);

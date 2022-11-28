@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { languageItem } from '../types'
-import Context from '../context/StaticContext'
 
 interface CardItemProps {
     item: languageItem
