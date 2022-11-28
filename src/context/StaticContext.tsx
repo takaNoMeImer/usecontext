@@ -14,10 +14,16 @@ export const StaticContext = createContext({})
 export const DataProvider = ({children}:DataProviderProps) => {
 
     const [lenguajes, setLenguajes] = useState<Array<languageItem>>(language);
+    const [listItem, setListItem] = useState<Array<languageItem>>([]);
+
+    const deleteAll = () => {
+        setLenguajes([]);
+        setListItem([])
+    }
 
     return (
         
-        <StaticContext.Provider value={{lenguajes, setLenguajes}}>
+        <StaticContext.Provider value={{lenguajes, setLenguajes, deleteAll, listItem, setListItem}}>
             { children }
         </StaticContext.Provider>
     )

@@ -6,13 +6,13 @@ import { StaticContext } from '../context/StaticContext';
 export function useContainer() {
 
     const [item, setItem] = useState<languageItem>();
-    const [listItem, setListItem] = useState<Array<languageItem>>([]);
-    const { lenguajes, setLenguajes } = useContext( StaticContext )
+    /* const [listItem, setListItem] = useState<Array<languageItem>>([]); */
+    const { lenguajes, setLenguajes, deleteAll, listItem, setListItem } = useContext( StaticContext )
 
-    const deleteAll = () => {
+    /* const deleteAll = () => {
         setLenguajes([]);
         setListItem([]);
-    }
+    } */
 
     const testItem = (element: languageItem) => {
         console.log(element);
